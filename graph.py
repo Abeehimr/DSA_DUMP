@@ -127,11 +127,11 @@ def bellman_ford_mit(Adj, s):                               # Adj: adjacency lis
     d[s], parent[s] = 0, s                                  # initialize source
     # construct shortest paths in rounds
     V = len(Adj)                                            # number of vertices
-    for k in range(V - 1):                                  # relax all edges in (V - 1) rounds
+    for _ in range(V - 1):                                  # relax all edges in (V - 1) rounds
         for u in range(V):                                  # loop over all edges (u, v)
             for v in Adj[u]:                                # relax edge from u to v
                 if d[v] > d[u] + Adj[u][v]:
-                    d[v] > d[u] + Adj[u][v]
+                    d[v] = d[u] + Adj[u][v]
                     parent[v] = u
     # check for negative weight cycles accessible from s
     for u in range(V):                                      # Loop over all edges (u, v)
